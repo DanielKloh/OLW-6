@@ -14,13 +14,13 @@ observers:
   dump: true
   original_dump: true
   queries: true
-  slow_queries: true
-  mail: true
+  slow_queries: false
+  mail: false
   logs: true
   http: true
   jobs: true
   commands: false
-  scheduled_commands: true
+  scheduled_commands: false
   gate: false
   cache: false
 xdebug:

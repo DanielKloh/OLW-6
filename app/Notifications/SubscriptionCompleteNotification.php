@@ -32,7 +32,7 @@ class SubscriptionCompleteNotification extends Notification
     public function toWhatsApp($notification)
     {
         return (new WhatsAppMessage)
-            ->contentSid("HX400e3d7bcd3072c89f2b763727262cc7")
+            ->contentSid("HXf94f4e5f4a2cbc8f59b38db0e3911c27")
             ->variables([
                 "1" => $this->name
             ]);

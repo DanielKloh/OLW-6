@@ -8,10 +8,9 @@ class UserService
 {
 
 
-    public function store($data): void
+    public function store($data): User
     {
-
-        User::create([
+        return User::create([
             "name" => $data["ProfileName"],
             "phone" => $data["WaId"]
         ]);
