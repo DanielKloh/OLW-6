@@ -7,14 +7,23 @@ use App\Notifications\Channels\WhatsAppMessage;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 
-class NewUserNotification extends Notification
+class MenuNotification extends Notification
 {
     use Queueable;
+
+    private string $message = "Aqui estão os comandos que você pode usar:
+    !menu -> Abrir menu
+    !agenda -> Agenda
+    !insights -> Insights
+    !update -> Update
+
+    Escolhe ai
+    ";
 
     /**
      * Create a new notification instance.
      */
-    public function __construct(protected string $name, protected string $stripeLink)
+    public function __construct()
     {
         //
     }
@@ -28,16 +37,12 @@ class NewUserNotification extends Notification
     {
         return [WhatsAppChannel::class];
     }
-    
-    public function toWhatsApp($notification)
+
+    /**
+     * Get the mail representation of the notification.
+     */
+    public function toWhatsApp(object $notifiable)
     {
-        //nova msg 
-        //HX86f676f6ad047277c9d7f067760c67a6
-        return (new WhatsAppMessage)
-            ->contentSid("HX86f676f6ad047277c9d7f067760c67a6")
-            ->variables([
-                "1" => $this->name,
-                "2" => $this->stripeLink
-            ]);
+        return (new WhatsAppMessage)->content($this->message);
     }
 }
