@@ -131,7 +131,7 @@ class ConversationalService
 
     public function  talkToGpt($messages, $clearMemory = false)
     {
-
+        // sleep(30);
         $client = \OpenAI::client(config("openai.auth_token"));
 
         $result = $client->chat()->create([

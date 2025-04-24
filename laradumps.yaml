@@ -14,15 +14,15 @@ observers:
   dump: true
   original_dump: true
   queries: true
-  slow_queries: false
-  mail: false
+  slow_queries: true
+  mail: true
   logs: true
   http: true
   jobs: true
-  commands: false
-  scheduled_commands: false
-  gate: false
-  cache: false
+  commands: true
+  scheduled_commands: true
+  gate: true
+  cache: true
 xdebug:
   client_host: 0.0.0.0
   client_port: 9003

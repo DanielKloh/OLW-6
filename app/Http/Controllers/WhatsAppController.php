@@ -17,7 +17,7 @@ class WhatsAppController extends Controller
         $phone = $request->post("WaId");
 
         $user = User::where("phone", $phone)->first();
-        
+
         if (!$user) {
             $user = $this->userService->store($request->all());
         }
@@ -31,6 +31,5 @@ class WhatsAppController extends Controller
 
         $this->conversationalService->setUser($user);
         $this->conversationalService->handleIncomingMessage($request->all());
-
     }
 }

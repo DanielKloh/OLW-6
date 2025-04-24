@@ -1,7 +1,20 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+
+
+if (app()->environment('local')) {
+    DB::purge('mysql');
+    config([
+        'database.connections.mysql.host' => env('DB_HOST', 'mysql'),
+        'database.connections.mysql.database' => env('DB_DATABASE', 'laravel'),
+        'database.connections.mysql.username' => env('DB_USERNAME', 'root'),
+        'database.connections.mysql.password' => env('DB_PASSWORD', ''),
+    ]);
+    DB::reconnect('mysql');
+}
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
